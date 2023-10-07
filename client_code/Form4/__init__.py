@@ -19,4 +19,6 @@ class Form4(Form4Template):
       open_form('Form2')
     elif self.drop_down_1.selected_value == 'Form3':
       open_form('Form3')
+    elif self.drop_down_1.selected_value == 'Form4':
+      open_form('Form4')
 
