@@ -13,3 +13,10 @@ class Form1(Form1Template):
     open_form('Form4')
     pass
 
+  def image_1_mouse_down(self, x, y, button, **event_args):
+    """This method is called when a mouse button is pressed on this component"""
+    alert('Hole in Road')
+    
+    pass
+
+
