@@ -15,6 +15,29 @@ components:
       spacing_below: small, background: '', horizontal_align: center}
     name: image_1
     layout_properties: {grid_position: 'MEFSVV,ZHWHIN'}
+  - type: DropDown
+    properties:
+      role: null
+      align: full
+      tooltip: ''
+      placeholder: ''
+      border: ''
+      enabled: true
+      foreground: ''
+      items: [Form1, Form2, Form3, Form4]
+      visible: true
+      font_size: null
+      font: ''
+      spacing_above: small
+      spacing_below: small
+      italic: false
+      background: ''
+      bold: false
+      underline: false
+      include_placeholder: true
+    name: drop_down_1
+    layout_properties: {grid_position: 'FNEHAZ,QBOLYL'}
+    event_bindings: {change: drop_down_1_change}
 - type: FlowPanel
   properties: {}
   name: navbar_links
