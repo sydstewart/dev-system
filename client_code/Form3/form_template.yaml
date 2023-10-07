@@ -22,6 +22,7 @@ components:
       spacing_below: small, background: '', horizontal_align: center}
     name: image_1
     layout_properties: {grid_position: 'MEKOFQ,GUPWQA'}
+    event_bindings: {mouse_down: image_1_mouse_down}
   - type: Button
     properties: {role: null, align: center, tooltip: '', border: '', enabled: true,
       foreground: '', visible: true, text: Go To Form 4, font_size: null, font: '',
