@@ -54,6 +54,20 @@ class Form4(Form4Template):
     #       i.open(map, sender)
     # marker.add_event_handler("click", marker_click)
 
+  def map_1_click(self, lat_lng, pixel, **event_args):
+    """This method is called when the user clicks on the map."""
+    alert ('Syd')
+    pass
+
+
+
+
+
+
+
+
+
+
 
 
 

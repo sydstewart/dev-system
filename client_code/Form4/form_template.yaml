@@ -54,7 +54,8 @@ components:
       zoom_control: true, disable_default_ui: false, clickable_icons: true}
     name: map_1
     layout_properties: {grid_position: 'MEFSVV,NJBCKT', full_width_row: true}
-    event_bindings: {}
+    event_bindings: {data_rightclick: map_1_data_rightclick, rightclick: map_1_rightclick,
+      click: map_1_click}
 - type: FlowPanel
   properties: {}
   name: navbar_links
