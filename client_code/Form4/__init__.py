@@ -44,6 +44,8 @@ class Form4(Form4Template):
       open_form('Form4')
     elif self.drop_down_1.selected_value == 'Form5':
       open_form('Form5')
+    elif self.drop_down_1.selected_value == 'Form6':
+      open_form('Form6')
 
   # def map_1_click(self, lat_lng, pixel, **event_args):
   #   """This method is called when the user clicks on the map."""
@@ -53,24 +55,3 @@ class Form4(Form4Template):
     #       i =GoogleMap.InfoWindow(content=Label(text="This is Cambridge!"))
     #       i.open(map, sender)
     # marker.add_event_handler("click", marker_click)
-
-  def map_1_click(self, lat_lng, pixel, **event_args):
-    """This method is called when the user clicks on the map."""
-    alert ('Syd')
-    pass
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-

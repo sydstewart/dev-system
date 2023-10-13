@@ -17,7 +17,7 @@ components:
       border: ''
       enabled: true
       foreground: ''
-      items: [Form1, Form2, Form3, Form4, Form5]
+      items: [Form1, Form2, Form3, Form4, Form5, Form6]
       visible: true
       font_size: null
       font: ''
