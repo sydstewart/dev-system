@@ -25,6 +25,23 @@ class Form6(Form6Template):
     
     self.marker = mapboxgl.Marker({'red': '#944840', 'draggable': True})
     self.marker.setLngLat([-2.834603077700183, 54.1973265832562]).addTo(self.mapbox)
+
+    self.geocoder = MapboxGeocoder({'accessToken': mapboxgl.accessToken,
+                                    'marker': False}) #we've already added a marker 
+    self.mapbox.addControl(self.geocoder)
+
+    self.geocoder.on('result', self.move_marker)
+
+    def move_marker(self, result):
+        #get the [longitude, latitude] coordinates from the JS object returned from 'result' 
+        lnglat = result['result']['geometry']['coordinates']
+        self.marker.setLngLat(lnglat)
+        print(result)
+
+
+
+
+  
     # self.map.on('mousemove', (e) => {
     # document.getElementById('info').innerHTML =
     # # `e.point` is the x, y coordinates of the `mousemove` event
@@ -42,9 +59,10 @@ class Form6(Form6Template):
 
     
     
-  # def move_marker(self, result):
-  #   lnglat = result['result']['geometry']['coordinates']
-  #   self.marker.setLngLat(lnglat)
+  def move_marker(self, result):
+    lnglat = result['result']['geometry']['coordinates']
+    print(lnglat)
+    self.marker.setLngLat(lnglat)
   #   self.get_iso(self.profile_dropdown.selected_value.lower(), self.time_dropdown.selected_value)
     
   # def marker_dragged(self, drag):
