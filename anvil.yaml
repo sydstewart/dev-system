@@ -2,7 +2,7 @@ services:
 - source: /runtime/services/tables.yml
   client_config: {}
   server_config: {}
-startup: {type: form, module: Form6}
+startup: {type: form, module: Form7}
 package_name: Prod_System
 allow_embedding: false
 name: Prod System
