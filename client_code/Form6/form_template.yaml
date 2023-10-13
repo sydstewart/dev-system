@@ -13,8 +13,8 @@ components:
     properties: {visible: true, spacing_above: small, spacing_below: small, height: '500',
       tooltip: ''}
     name: spacer_1
-    layout_properties: {grid_position: 'TSJEID,XGXXML'}
-    event_bindings: {show: spacer_1_show}
+    layout_properties: {grid_position: 'TSJEID,XGXXML', full_width_row: false}
+    event_bindings: {}
 - type: FlowPanel
   properties: {}
   name: navbar_links
