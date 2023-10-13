@@ -25,7 +25,14 @@ class Form6(Form6Template):
     
     self.marker = mapboxgl.Marker({'red': '#944840', 'draggable': True})
     self.marker.setLngLat([-2.834603077700183, 54.1973265832562]).addTo(self.mapbox)
-    
+    map.on('mousemove', (e) => {
+    document.getElementById('info').innerHTML =
+    # `e.point` is the x, y coordinates of the `mousemove` event
+    # relative to the top-left corner of the map.
+    JSON.stringify(e.point) +
+    '<br />' +
+    # `e.lngLat` is the longitude, latitude geographical position of the event.
+    JSON.stringify(e.lngLat.wrap());
     # self.geocoder = MapboxGeocoder({'accessToken': mapboxgl.accessToken,
     #                                 'marker': False})
     # self.mapbox.addControl(self.geocoder)
@@ -63,15 +70,7 @@ class Form6(Form6Template):
   #   response = anvil.http.request(f"https://api.mapbox.com/isochrone/v1/mapbox/{profile}/{lnglat.lng},{lnglat.lat}?contours_minutes={contours_minutes}&polygons=true&access_token={self.token}", json=True)
   #   self.mapbox.getSource('iso').setData(response)
 
-      # map.on('click', (event) => {
-      #   // If the user clicked on one of your markers, get its information.
-      #   const features = map.queryRenderedFeatures(event.point, {
-      #     layers: ['YOUR_LAYER_NAME'] // replace with your layer name
-      #   });
-      #   if (!features.length) {
-      #     return;
-      #   }
-      #   const feature = features[0];
+
 
 
 
