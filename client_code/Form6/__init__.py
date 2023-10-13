@@ -25,14 +25,14 @@ class Form6(Form6Template):
     
     self.marker = mapboxgl.Marker({'red': '#944840', 'draggable': True})
     self.marker.setLngLat([-2.834603077700183, 54.1973265832562]).addTo(self.mapbox)
-    map.on('mousemove', (e) => {
-    document.getElementById('info').innerHTML =
-    # `e.point` is the x, y coordinates of the `mousemove` event
-    # relative to the top-left corner of the map.
-    JSON.stringify(e.point) +
-    '<br />' +
-    # `e.lngLat` is the longitude, latitude geographical position of the event.
-    JSON.stringify(e.lngLat.wrap());
+    # self.map.on('mousemove', (e) => {
+    # document.getElementById('info').innerHTML =
+    # # `e.point` is the x, y coordinates of the `mousemove` event
+    # # relative to the top-left corner of the map.
+    # JSON.stringify(e.point) +
+    # '<br />' +
+    # # `e.lngLat` is the longitude, latitude geographical position of the event.
+    # JSON.stringify(e.lngLat.wrap());
     # self.geocoder = MapboxGeocoder({'accessToken': mapboxgl.accessToken,
     #                                 'marker': False})
     # self.mapbox.addControl(self.geocoder)
