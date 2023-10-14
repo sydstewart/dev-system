@@ -24,31 +24,30 @@ class Form7(Form7Template):
     
     self.marker = mapboxgl.Marker({'red': '#944840', 'draggable': True})
     self.marker.setLngLat([-2.834603077700183, 54.1973265832562]).addTo(self.mapbox)
-    popup = mapboxgl.Popup({ 'offset': 25 }).setText(
-         'Construction on the Washington Monument began in 1848.')
+    popup = mapboxgl.Popup({ 'offset': 20 }).setText(
+         '-2.834603077700183, 54.1973265832562')
     self.marker.setPopup(popup)
     self.geocoder = MapboxGeocoder({'accessToken': mapboxgl.accessToken,
                                     'marker': False})
     self.mapbox.addControl(self.geocoder)
   
     self.geocoder.on('result', self.move_marker)
-    # self.marker.on('drag', self.marker_dragged)
 
-    popup = mapboxgl.Popup({ 'offset': 25 }).setText(
-         'Construction on the Washington Monument began in 1848.')
-    self.marker.on('dragend', sel.onDragEnd)  
+    
+    self.marker.on('dragend', self.onDragEnd)  
   
   def move_marker(self, result):
-    lnglat = result['result']['geometry']['coordinates']
-    self.marker.setLngLat(lnglat)
+    # lnglat = result['result']['geometry']['coordinates']
+    lnglat = self.marker.getLngLat();
     popup = mapboxgl.Popup({ 'offset': 25 }).setText(
          lnglat)
     self.marker.setPopup(popup)
     alert(lnglat)
     
-  def onDragEnd(self, result):
-      lngLat = marker.getLngLat();
-      popup = mapboxgl.Popup({ 'offset': 25 }).setText(lnglat)
+  def onDragEnd(self, dragend):
+      xy = self.marker.getLngLat()
+      # alert(xy)
+      popup = mapboxgl.Popup({ 'offset': 25 }).setText(xy)
       self.marker.setPopup(popup)
 
  
