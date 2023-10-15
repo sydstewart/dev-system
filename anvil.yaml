@@ -21,3 +21,24 @@ native_deps: {head_html: '<script src=''https://api.mapbox.com/mapbox-gl-js/v2.1
 
 
     '}
+db_schema:
+  location:
+    client: none
+    server: full
+    columns:
+    - name: Location
+      admin_ui: {width: 200, order: 0}
+      type: string
+    - name: Longitude
+      admin_ui: {width: 200, order: 1}
+      type: number
+    - name: Latitude
+      admin_ui: {order: 2, width: 200}
+      type: number
+    - name: Desc
+      admin_ui: {order: 0.5, width: 200}
+      type: string
+    - name: created
+      admin_ui: {width: 200, order: 3}
+      type: datetime
+    title: location

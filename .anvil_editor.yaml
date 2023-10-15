@@ -8,7 +8,8 @@ unique_ids:
     Form6: '1697188366619184334973159.25983'
     Form7: '1697219485699210868058844.7378'
   modules: {}
-  server_modules: {}
+  server_modules:
+    ServerModule1: '1697361186195627102547796.49'
   assets:
     standard-page.html: YRYEBPL3QOOCBIGPBI44ME6PMW5LRE2K
     theme.css: ZMHZQ4S5XNC7LSA3U5GFUIOC2L2TZXJR

@@ -1,5 +1,9 @@
 from ._anvil_designer import Form7Template
 from anvil import *
+import anvil.server
+import anvil.tables as tables
+import anvil.tables.query as q
+from anvil.tables import app_tables
 from anvil.js.window import mapboxgl, MapboxGeocoder
 import anvil.js
 import anvil.http
@@ -49,6 +53,29 @@ class Form7(Form7Template):
       # alert(xy)
       popup = mapboxgl.Popup({ 'offset': 25 }).setText(xy)
       self.marker.setPopup(popup)
+
+
+
+  def add_location_button_click(self, **event_args):
+    """This method is called when the button is clicked"""
+    lnglat = self.marker.getLngLat();
+    
+    self.latitude_text_box.text = lnglat['lat']
+    self.longitude_text_box.text = lnglat['lng']
+
+    name = self.location_text_box.text
+    desc = self.location_description_text_area.text
+    lat =  self.latitude_text_box.text
+    lng = self.longitude_text_box.text 
+    
+    anvil.server.call('add_location', name, desc, lat, lng)
+    Notification("We have recorded your feedback, and sent an email to the owner of this app.", title="Thanks!").show()
+
+    self.clear_inputs()
+   
+    pass
+
+
 
  
   
