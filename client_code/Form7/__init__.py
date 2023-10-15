@@ -15,6 +15,7 @@ class Form7(Form7Template):
     self.token = "pk.eyJ1Ijoic3lkbmV5c3Rld2FydCIsImEiOiJjbG5vajJ1b3kwMG9xMnRscWcxa3p4YXBtIn0.mnKGtTfkOCDAGkdxA-cZnw"
     # Any code you write here will run before the form opens.
     self.dom = anvil.js.get_dom_node(self.spacer_1)
+
   
   def form_show(self, **event_args):
     """This method is called when the HTML panel is shown on the screen"""
@@ -25,17 +26,37 @@ class Form7(Form7Template):
     'style': 'mapbox://styles/mapbox/streets-v12',
     'center': [-2.834603077700183, 54.1973265832562],
     'zoom': 15})
+    locations = app_tables.location.search() #anvil.server.call('get_all_locations' )
+    # self.hits_textbox.text = len(locations) 
+    for location in locations:
+       self.marker = mapboxgl.Marker({'color': 'brown', 'scale': '0.75', 'draggable': False})
+       lat = location['Latitude']
+       lng = location['Longitude']
+       loc = location['Location']
+       notes = location['Desc']
+       print('lng',lng, ' ' ,'lat',lat)
+       
+       popuptext = ('Name:' + loc + '<br>' +
+                    'Notes:' + notes + '<br>' +
+                    'lat:' + str(lat) + '<br>' +   
+                   'lng:' + str(lng) + '<br>' 
+                   )
+       self.marker.setLngLat([lng,lat]).addTo(self.mapbox)
+       popup = mapboxgl.Popup({ 'offset': 25, 'max-width': 1000}).setHTML(popuptext)  #setText(
+         # popuptext )
+      # .setHTML('<h1>lat <br> lng ,br. loc</h1>')
+       self.marker.setPopup(popup)
     
-    self.marker = mapboxgl.Marker({'red': '#944840', 'draggable': True})
+    self.marker = mapboxgl.Marker({'blue': '#0000FF', 'draggable': True})
     self.marker.setLngLat([-2.834603077700183, 54.1973265832562]).addTo(self.mapbox)
     popup = mapboxgl.Popup({ 'offset': 20 }).setText(
          '-2.834603077700183, 54.1973265832562')
-    self.marker.setPopup(popup)
-    self.geocoder = MapboxGeocoder({'accessToken': mapboxgl.accessToken,
-                                    'marker': False})
-    self.mapbox.addControl(self.geocoder)
+    # self.marker.setPopup(popup)
+    # self.geocoder = MapboxGeocoder({'accessToken': mapboxgl.accessToken,
+    #                                 'marker': False})
+    # self.mapbox.addControl(self.geocoder)
   
-    self.geocoder.on('result', self.move_marker)
+    # self.geocoder.on('result', self.move_marker)
 
     
     self.marker.on('dragend', self.onDragEnd)  

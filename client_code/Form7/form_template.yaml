@@ -5,7 +5,7 @@ container:
   event_bindings: {show: form_show}
 components:
 - type: ColumnPanel
-  properties: {col_widths: '{"GGNVUH":35,"LFMHWD":40,"EBAGPU":5,"XNWPWH":10,"RINEVO":50,"PUPPKC":15,"MDNPZY":45}'}
+  properties: {col_widths: '{"LFMHWD":30,"EBAGPU":5,"XNWPWH":10,"RINEVO":50,"PUPPKC":15,"MDNPZY":45}'}
   name: content_panel
   layout_properties: {slot: default}
   components:
@@ -13,7 +13,11 @@ components:
     properties: {visible: true, spacing_above: small, spacing_below: small, height: 701,
       tooltip: ''}
     name: spacer_1
-    layout_properties: {grid_position: 'SESQQJ,GGNVUH', full_width_row: false}
+    layout_properties: {grid_position: 'PRUYOU,JRXSDT', full_width_row: true}
+  - type: Spacer
+    properties: {height: 32}
+    name: spacer_3
+    layout_properties: {grid_position: 'ZNWUAV,GANMFJ'}
   - type: Label
     properties: {role: null, align: left, tooltip: '', border: '', foreground: '',
       visible: true, text: Location Name, font_size: null, font: '', spacing_above: small,
@@ -48,28 +52,28 @@ components:
       icon_align: left, spacing_below: small, italic: false, background: '', bold: false,
       underline: false, icon: ''}
     name: label_4
-    layout_properties: {grid_position: 'SESQQJ,LFMHWD EWJMRS,RVECZN'}
+    layout_properties: {grid_position: 'SESQQJ,LFMHWD EWJMRS,RVECZN', full_width_row: false}
   - type: TextBox
     properties: {role: null, align: left, hide_text: false, tooltip: '', placeholder: '',
       border: '', enabled: true, foreground: '', visible: true, text: '', font_size: null,
       font: '', spacing_above: small, type: number, spacing_below: small, italic: false,
       background: '', bold: false, underline: false}
     name: longitude_text_box
-    layout_properties: {grid_position: 'SESQQJ,LFMHWD EWJMRS,FAFCQN'}
+    layout_properties: {grid_position: 'SESQQJ,LFMHWD EWJMRS,FAFCQN', full_width_row: false}
   - type: Label
     properties: {role: null, align: left, tooltip: '', border: '', foreground: '',
       visible: true, text: latitude, font_size: null, font: '', spacing_above: small,
       icon_align: left, spacing_below: small, italic: false, background: '', bold: false,
       underline: false, icon: ''}
     name: label_3
-    layout_properties: {grid_position: 'SESQQJ,LFMHWD ABUTBO,ZBEZXX'}
+    layout_properties: {grid_position: 'SESQQJ,LFMHWD ABUTBO,ZBEZXX', full_width_row: false}
   - type: TextBox
     properties: {role: null, align: left, hide_text: false, tooltip: '', placeholder: '',
       border: '', enabled: true, foreground: '', visible: true, text: '', font_size: null,
       font: '', spacing_above: small, type: number, spacing_below: small, italic: false,
       background: '', bold: false, underline: false}
     name: latitude_text_box
-    layout_properties: {grid_position: 'SESQQJ,LFMHWD ABUTBO,GWFWMO'}
+    layout_properties: {grid_position: 'SESQQJ,LFMHWD ABUTBO,GWFWMO', full_width_row: false}
   - type: Button
     properties: {role: null, align: center, tooltip: '', border: '', enabled: true,
       foreground: '', visible: true, text: Add Location, font_size: null, font: '',
