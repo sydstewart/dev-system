@@ -69,9 +69,14 @@ class Form7(Form7Template):
     lng = self.longitude_text_box.text 
     
     anvil.server.call('add_location', name, desc, lat, lng)
-    Notification("We have recorded your feedback, and sent an email to the owner of this app.", title="Thanks!").show()
-
+    Notification("We have recorded your location, and sent an email to the owner of this map.", title="Thanks!", timeout = 10).show()
     self.clear_inputs()
+  def clear_inputs(self):
+    # Clear our three text boxes
+    self.location_text_box.text  =""
+    self.location_description_text_area.text =""
+    self.latitude_text_box.text = ""
+    self.longitude_text_box.text  = ""
    
     pass
 

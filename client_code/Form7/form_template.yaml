@@ -50,7 +50,10 @@ components:
     name: label_4
     layout_properties: {grid_position: 'SESQQJ,LFMHWD EWJMRS,RVECZN'}
   - type: TextBox
-    properties: {}
+    properties: {role: null, align: left, hide_text: false, tooltip: '', placeholder: '',
+      border: '', enabled: true, foreground: '', visible: true, text: '', font_size: null,
+      font: '', spacing_above: small, type: number, spacing_below: small, italic: false,
+      background: '', bold: false, underline: false}
     name: longitude_text_box
     layout_properties: {grid_position: 'SESQQJ,LFMHWD EWJMRS,FAFCQN'}
   - type: Label
@@ -61,7 +64,10 @@ components:
     name: label_3
     layout_properties: {grid_position: 'SESQQJ,LFMHWD ABUTBO,ZBEZXX'}
   - type: TextBox
-    properties: {}
+    properties: {role: null, align: left, hide_text: false, tooltip: '', placeholder: '',
+      border: '', enabled: true, foreground: '', visible: true, text: '', font_size: null,
+      font: '', spacing_above: small, type: number, spacing_below: small, italic: false,
+      background: '', bold: false, underline: false}
     name: latitude_text_box
     layout_properties: {grid_position: 'SESQQJ,LFMHWD ABUTBO,GWFWMO'}
   - type: Button
