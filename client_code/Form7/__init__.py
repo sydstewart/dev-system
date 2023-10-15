@@ -39,12 +39,19 @@ class Form7(Form7Template):
        popuptext = ('Name:' + loc + '<br>' +
                     'Notes:' + notes + '<br>' +
                     'lat:' + str(lat) + '<br>' +   
-                   'lng:' + str(lng) + '<br>' 
+                   'lng:' + str(lng) + '<br>' +
+                   '<button id="view_full()">View Full'
                    )
+       def view_full():
+         alert('syd')
+ 
+# document.getElementById('view-full').addEventListener('click', logger)
        self.marker.setLngLat([lng,lat]).addTo(self.mapbox)
-       popup = mapboxgl.Popup({ 'offset': 25, 'max-width': 1000}).setHTML(popuptext)  #setText(
+       popup = mapboxgl.Popup({ 'offset': 25, 'max-width': 1000}).setHTML(popuptext )  #setText(
          # popuptext )
       # .setHTML('<h1>lat <br> lng ,br. loc</h1>')
+#       setHTML(
+# "<button type='button' onClick={() => this.handleClick(something)}>This Button"
        self.marker.setPopup(popup)
     
     self.marker = mapboxgl.Marker({'blue': '#0000FF', 'draggable': True})
@@ -68,7 +75,8 @@ class Form7(Form7Template):
          lnglat)
     self.marker.setPopup(popup)
     alert(lnglat)
-    
+  def show_info(self,**event_args):
+      alert('Syd')
   def onDragEnd(self, dragend):
       xy = self.marker.getLngLat()
       # alert(xy)
