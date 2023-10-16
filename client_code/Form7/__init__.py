@@ -45,7 +45,7 @@ class Form7(Form7Template):
        #             '<button (click)="logger()">View Full</button>')
        #             )
        # popuptext = '<strong>Make it Mount Pleasant</strong><p><a href="https://anvil.works/build/apps/S5QUCGAMGMJBSQ5A/code/forms/Form4#design;code:20:66" target="_blank" title="Opens in a new window">Make it Mount Pleasant</a> is a handmade and vintage market and afternoon of live entertainment and kids activities. 12:00-6:00 p.m.</p>'
-       popuptext = '<button type="button" >Click Me!</button>'
+       popuptext = '<button id="button" @click="myMethod">Click here!</button>'
 # document.getElementById('view-full').addEventListener('click', logger)
        self.marker.setLngLat([lng,lat]).addTo(self.mapbox)
        popup = mapboxgl.Popup({ 'offset': 25, 'max-width': 1000}).setHTML(popuptext)
