@@ -4,10 +4,10 @@ import anvil.server
 import anvil.tables as tables
 import anvil.tables.query as q
 from anvil.tables import app_tables
-from anvil.js.window import mapboxgl, MapboxGeocoder
+from anvil.js.window import mapboxgl, MapboxGeocoder, document
 import anvil.js
 import anvil.http
-
+ 
 class Form7(Form7Template):
   def __init__(self, **properties):
     # Set Form properties and Data Bindings.
@@ -22,12 +22,14 @@ class Form7(Form7Template):
     mapboxgl.accessToken = self.token
     self.mapbox = mapboxgl.Map({
     'container': self.dom,
+    
     # // Choose from Mapbox's core styles, or make your own style with Mapbox Studio
     'style': 'mapbox://styles/mapbox/streets-v12',
     'center': [-2.834603077700183, 54.1973265832562],
     'zoom': 15})
     locations = app_tables.location.search() #anvil.server.call('get_all_locations' )
     # self.hits_textbox.text = len(locations) 
+    print(document.getElementById('test'))
     for location in locations:
        self.marker = mapboxgl.Marker({'color': 'brown', 'scale': '0.75', 'draggable': False})
        lat = location['Latitude']
@@ -35,19 +37,20 @@ class Form7(Form7Template):
        loc = location['Location']
        notes = location['Desc']
        print('lng',lng, ' ' ,'lat',lat)
-       
-       popuptext = ('Name:' + loc + '<br>' +
-                    'Notes:' + notes + '<br>' +
-                    'lat:' + str(lat) + '<br>' +   
-                   'lng:' + str(lng) + '<br>' +
-                   '<button id="view_full()">View Full'
-                   )
-       def view_full():
-         alert('syd')
+       print(document.getElementById('test'))
+       # popuptext = ('Name:' + loc + '<br>' +
+       #              'Notes:' + notes + '<br>' +
+       #              'lat:' + str(lat) + '<br>' +   
+       #             'lng:' + str(lng) + '<br>' +
+       #             '<button (click)="logger()">View Full</button>')
+       #             )
+       popuptext = '<strong>Make it Mount Pleasant</strong><p><a href="https://anvil.works/build/apps/S5QUCGAMGMJBSQ5A/code/forms/Form4#design;code:20:66" target="_blank" title="Opens in a new window">Make it Mount Pleasant</a> is a handmade and vintage market and afternoon of live entertainment and kids activities. 12:00-6:00 p.m.</p>'
  
 # document.getElementById('view-full').addEventListener('click', logger)
        self.marker.setLngLat([lng,lat]).addTo(self.mapbox)
-       popup = mapboxgl.Popup({ 'offset': 25, 'max-width': 1000}).setHTML(popuptext )  #setText(
+       popup = mapboxgl.Popup({ 'offset': 25, 'max-width': 1000}).setHTML(popuptext)
+     
+       # popup = mapboxgl.Popup({ 'offset': 25, 'max-width': 1000}).getElement().addEventListener('click', () => { }) 
          # popuptext )
       # .setHTML('<h1>lat <br> lng ,br. loc</h1>')
 #       setHTML(
@@ -67,6 +70,10 @@ class Form7(Form7Template):
 
     
     self.marker.on('dragend', self.onDragEnd)  
+  
+  def logger(self, **event_args):
+     alert('syd')
+  
   
   def move_marker(self, result):
     # lnglat = result['result']['geometry']['coordinates']
@@ -100,6 +107,7 @@ class Form7(Form7Template):
     anvil.server.call('add_location', name, desc, lat, lng)
     Notification("We have recorded your location, and sent an email to the owner of this map.", title="Thanks!", timeout = 10).show()
     self.clear_inputs()
+    
   def clear_inputs(self):
     # Clear our three text boxes
     self.location_text_box.text  =""
