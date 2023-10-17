@@ -1,0 +1,28 @@
+container:
+  type: HtmlTemplate
+  properties: {html: "<!DOCTYPE html>\n<html>\n<head>\n<meta charset=\"utf-8\">\n\
+      <title>Display a map on a webpage</title>\n<meta name=\"viewport\" content=\"\
+      initial-scale=1,maximum-scale=1,user-scalable=no\">\n<link href=\"https://api.mapbox.com/mapbox-gl-js/v2.14.1/mapbox-gl.css\"\
+      \ rel=\"stylesheet\">\n<script src=\"https://api.mapbox.com/mapbox-gl-js/v2.14.1/mapbox-gl.js\"\
+      ></script>\n<style>\nbody { margin: 0; padding: 0; }\n#map { position: absolute;\
+      \ top: 0; bottom: 0; width: 100%; }\n</style>\n</head>\n<body>\n<div id=\"map\"\
+      ></div>\n<script>\nmapboxgl.accessToken = 'pk.eyJ1Ijoic3lkbmV5c3Rld2FydCIsImEiOiJjbG5vajJ1b3kwMG9xMnRscWcxa3p4YXBtIn0.mnKGtTfkOCDAGkdxA-cZnw';\n\
+      const map = new mapboxgl.Map({\ncontainer: 'map', // container ID\n// Choose\
+      \ from Mapbox's core styles, or make your own style with Mapbox Studio\nstyle:\
+      \ 'mapbox://styles/mapbox/streets-v12', // style URL\ncenter: [-2.834603077700183,\
+      \ 54.1973265832562], // starting position [lng, lat]\nzoom: 15 // starting zoom\n\
+      \n});\n\n</script>\n \n</body>\n</html>\n<div anvil-slot=\"default\"></div>"}
+components:
+- type: ColumnPanel
+  properties: {role: card}
+  name: card_1
+  layout_properties: {slot: default}
+- type: Button
+  properties: {role: null, align: center, tooltip: '', border: '', enabled: true,
+    foreground: '', visible: true, text: button_1, font_size: null, font: '', spacing_above: small,
+    icon_align: left, spacing_below: small, italic: false, background: 'theme:White',
+    bold: false, underline: false, icon: ''}
+  name: button_1
+  layout_properties: {slot: default}
+  event_bindings: {click: button_1_click}
+is_package: true
