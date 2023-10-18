@@ -37,53 +37,39 @@ class Form7(Form7Template):
        loc = location['Location']
        notes = location['Desc']
        print('lng',lng, ' ' ,'lat',lat)
-       print(document.getElementById('test'))
+       print(document.getElementById('logger'))
        popuptext = ('Name:' + loc + '<br>' +
                     'Notes:' + notes + '<br>' +
                     'lat:' + str(lat) + '<br>' +   
                    'lng:' + str(lng) + '<br>' +
-                   '<button (click)="logger()">View Full</button>')
-                   
-       # popuptext = '<strong>Make it Mount Pleasant</strong><p><a href="https://anvil.works/build/apps/S5QUCGAMGMJBSQ5A/code/forms/Form4#design;code:20:66" target="_blank" title="Opens in a new window">Make it Mount Pleasant</a> is a handmade and vintage market and afternoon of live entertainment and kids activities. 12:00-6:00 p.m.</p>'
-       # popuptext = '<button id="button" @click="myMethod">Click here!</button>'
-# document.getElementById('view-full').addEventListener('click', logger)
+                   '<button (click)="logger">View Full</button>')
+       self.marker.on('click', self.text_change)
+      
        self.marker.setLngLat([lng,lat]).addTo(self.mapbox)
        popup = mapboxgl.Popup({ 'offset': 25, 'max-width': 1000}).setHTML(popuptext)
-#        geoJson = {
-#             features: [{
-#             type: 'Feature',
-#             properties: {
-#                 'marker-color': '#f00',
-#                 'marker-size': 'large',
-#                 'marker-symbol': 'rocket',
-#                 video: '<iframe src="//player.vimeo.com/video/106112939" width="380" height="281" frameborder="0" webkitallowfullscreen mozallowfullscreen allowfullscreen></iframe> <p><a href="http://vimeo.com/106112939"><h2>How Simplicity Will Save GIS</h2><p>Vladimir Agafonkin</a> from <a href="http://vimeo.com/foss4g">FOSS4G</a> on <a href="https://vimeo.com">Vimeo</a>.</p>',
-#             },
-#             geometry: {
-#                 type: 'Point',
-#                 coordinates: [0,0]
-#             }
-#     }]
-# };
-       # popup = mapboxgl.Popup({ 'offset': 25, 'max-width': 1000}).getElement().addEventListener('click', () => { }) 
-         # popuptext )
-      # .setHTML('<h1>lat <br> lng ,br. loc</h1>')
-#       setHTML(
-# "<button type='button' onClick={() => this.handleClick(something)}>This Button"
+
        self.marker.setPopup(popup)
-    
+       self.marker.on('click', self.text_change)
+
+  def text_change(self, popuptext):
+    self.text_area_1.text = popuptext
+    alert(popuptext)
+ 
+   # document.getElementById('view-full').addEventListener('click', logger) 
     self.marker = mapboxgl.Marker({'blue': '#0000FF', 'draggable': True})
     self.marker.setLngLat([-2.834603077700183, 54.1973265832562]).addTo(self.mapbox)
     popup = mapboxgl.Popup({ 'offset': 20 }).setText(
          '-2.834603077700183, 54.1973265832562')
-    # self.marker.setPopup(popup)
-    # self.geocoder = MapboxGeocoder({'accessToken': mapboxgl.accessToken,
-    #                                 'marker': False})
-    # self.mapbox.addControl(self.geocoder)
-  
-    # self.geocoder.on('result', self.move_marker)
 
+    self.marker.on('click', popuptext)
+
+  def text_change(self, popuptext):
+    print(source, self.quill.getText())
+    self.text_area_1.text = popuptext
+    alert(popuptext)
     
     self.marker.on('dragend', self.onDragEnd)  
+    self.marker.on('help', self.logger)  
   
   def logger(self, **event_args):
      alert('syd')
