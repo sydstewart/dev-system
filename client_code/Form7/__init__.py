@@ -16,8 +16,8 @@ class Form7(Form7Template):
     self.token = "pk.eyJ1Ijoic3lkbmV5c3Rld2FydCIsImEiOiJjbG5vajJ1b3kwMG9xMnRscWcxa3p4YXBtIn0.mnKGtTfkOCDAGkdxA-cZnw"
     # Any code you write here will run before the form opens.
     self.dom = anvil.js.get_dom_node(self.map_1)
-
-  
+    self.repeating_panel_1.items = app_tables.trees.search()
+    treelist = 
   def form_show(self, **event_args):
     """This method is called when the HTML panel is shown on the screen"""
     mapboxgl.accessToken = self.token
@@ -136,6 +136,11 @@ class Form7(Form7Template):
     self.longitude_text_box.text  = ""
    
     pass
+
+  def drop_down_1_change(self, **event_args):
+    """This method is called when an item is selected"""
+    pass
+
 
 
 

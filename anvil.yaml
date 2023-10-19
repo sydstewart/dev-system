@@ -47,15 +47,10 @@ db_schema:
     - name: created
       admin_ui: {width: 200, order: 3}
       type: datetime
-    title: location
-  table_2:
-    client: none
-    server: full
-    columns:
-    - name: Tree_Species
-      admin_ui: {width: 200, order: 0}
+    - name: TreeType
+      admin_ui: {width: 200, order: 4}
       type: string
-    title: Table 2
+    title: location
   files:
     client: none
     server: full
@@ -70,3 +65,14 @@ db_schema:
       admin_ui: {order: 2, width: 200}
       type: string
     title: Files
+  trees:
+    client: full
+    server: full
+    columns:
+    - name: Name
+      admin_ui: {order: 0, width: 200}
+      type: string
+    - name: Type
+      admin_ui: {width: 200, order: 1}
+      type: string
+    title: Trees

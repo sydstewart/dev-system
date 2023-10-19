@@ -1,0 +1,9 @@
+container: {type: DataRowPanel}
+components:
+- type: TextBox
+  properties: {}
+  name: text_box_1
+  layout_properties: {column: BEKAQR}
+  data_bindings:
+  - {property: text, code: 'self.item[''Name'']', writeback: true}
+is_package: true
