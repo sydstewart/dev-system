@@ -4,17 +4,18 @@ import anvil.server
 import anvil.tables as tables
 import anvil.tables.query as q
 from anvil.tables import app_tables
-from anvil.js.window import mapboxgl, MapboxGeocoder, document 
-import anvil.js
+from anvil.js.window import mapboxgl, MapboxGeocoder, document , jQuery
+from anvil.js import get_dom_node
 import anvil.http
- 
+
+
 class Form7(Form7Template):
   def __init__(self, **properties):
     # Set Form properties and Data Bindings.
     self.init_components(**properties)
     self.token = "pk.eyJ1Ijoic3lkbmV5c3Rld2FydCIsImEiOiJjbG5vajJ1b3kwMG9xMnRscWcxa3p4YXBtIn0.mnKGtTfkOCDAGkdxA-cZnw"
     # Any code you write here will run before the form opens.
-    self.dom = anvil.js.get_dom_node(self.spacer_1)
+    self.dom = anvil.js.get_dom_node(self.map_1)
 
   
   def form_show(self, **event_args):
@@ -61,7 +62,10 @@ class Form7(Form7Template):
 
   # def change_text(self):
   #  self.my_label.text='audio has finished playing'
- 
+     
+    iframe = jQuery("<iframe width='100%' height='800px'>").attr("src"," \
+     https://www.woodlandtrust.org.uk/trees-woods-and-wildlife/british-trees/a-z-of-british-trees/alder/") 
+    iframe.appendTo(get_dom_node(self.column_panel_1))
 
   def text_change(self, popuptext):
     self.text_area_1.text = popuptext
@@ -79,13 +83,9 @@ class Form7(Form7Template):
     popupElem.style.fontSize = "25px"
     print(xdom[''])
     xdom.addEventListener('click',self.text_change)
-    self.marker.on('click', self.text_change)
+    # self.marker.on('click', self.text_change)
   def text_change(self):
-    # print(source, self.quill.getText())
-    self.text_area_1.text = popuptext
-    print(popuptext)
-    alert(popuptext)
-    # print('xdom', xdom)
+
     
     self.marker.on('dragend', self.onDragEnd)  
     self.marker.on('help', self.logger) 
