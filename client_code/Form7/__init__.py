@@ -4,7 +4,7 @@ import anvil.server
 import anvil.tables as tables
 import anvil.tables.query as q
 from anvil.tables import app_tables
-from anvil.js.window import mapboxgl, MapboxGeocoder, document
+from anvil.js.window import mapboxgl, MapboxGeocoder, document 
 import anvil.js
 import anvil.http
  
@@ -29,7 +29,7 @@ class Form7(Form7Template):
     'zoom': 15})
     locations = app_tables.location.search() #anvil.server.call('get_all_locations' )
     # self.hits_textbox.text = len(locations) 
-    print(document.getElementById('test'))
+    
     for location in locations:
        self.marker = mapboxgl.Marker({'color': 'brown', 'scale': '0.75', 'draggable': False})
        lat = location['Latitude']
@@ -37,19 +37,31 @@ class Form7(Form7Template):
        loc = location['Location']
        notes = location['Desc']
        print('lng',lng, ' ' ,'lat',lat)
-       print(document.getElementById('logger'))
+
        popuptext = ('Name:' + loc + '<br>' +
                     'Notes:' + notes + '<br>' +
                     'lat:' + str(lat) + '<br>' +   
                    'lng:' + str(lng) + '<br>' +
-                   '<button (click)="logger">View Full</button>')
+                  '<button  id="myBtn">Hello </button>')
+                   # '<button (click)="logger">View Full</button>')
        self.marker.on('click', self.text_change)
-      
+       # print(self.dom.getElementById('button'))
        self.marker.setLngLat([lng,lat]).addTo(self.mapbox)
        popup = mapboxgl.Popup({ 'offset': 25, 'max-width': 1000}).setHTML(popuptext)
 
+      
        self.marker.setPopup(popup)
        self.marker.on('click', self.text_change)
+  # print('button', document.getElementById('View Full'))
+  # document.getElementById("myBtn")  #.addEventListener("click",self.click)
+  # # def click(self):
+  #   # alert('Syd')
+
+  # xdom.addEventListener('click',self.change_text)
+
+  # def change_text(self):
+  #  self.my_label.text='audio has finished playing'
+ 
 
   def text_change(self, popuptext):
     self.text_area_1.text = popuptext
@@ -62,7 +74,9 @@ class Form7(Form7Template):
          '-2.834603077700183, 54.1973265832562')
 
     self.marker.on('click', popuptext)
-
+    xdom=document.getElementById("myBtn")
+    print('xdom', xdom)
+    
   def text_change(self, popuptext):
     print(source, self.quill.getText())
     self.text_area_1.text = popuptext
