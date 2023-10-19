@@ -74,16 +74,20 @@ class Form7(Form7Template):
          '-2.834603077700183, 54.1973265832562')
 
     self.marker.on('click', popuptext)
-    xdom=document.getElementById("myBtn")
-    print('xdom', xdom)
+    xdom=document.getElementsById("myBtn")
+    xdom.addEventListener('click',self.text_change)
     
-  def text_change(self, popuptext):
-    print(source, self.quill.getText())
+    
+  def text_change(self,):
+    # print(source, self.quill.getText())
     self.text_area_1.text = popuptext
+    print(popuptext)
     alert(popuptext)
+    # print('xdom', xdom)
     
     self.marker.on('dragend', self.onDragEnd)  
-    self.marker.on('help', self.logger)  
+    self.marker.on('help', self.logger) 
+   
   
   def logger(self, **event_args):
      alert('syd')
