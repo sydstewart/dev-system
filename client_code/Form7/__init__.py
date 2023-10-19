@@ -145,7 +145,7 @@ class Form7(Form7Template):
 
   def drop_down_1_change(self, **event_args):
     """This method is called when an item is selected"""
-    
+    self.map_1.clear()
     locations = app_tables.location.search(TreeType = self.drop_down_1.selected_value) #anvil.server.call('get_all_locations' )
     # self.hits_textbox.text = len(locations) 
     print(self.drop_down_1.selected_value)
@@ -173,6 +173,11 @@ class Form7(Form7Template):
       
        self.marker.setPopup(popup)
     pass
+
+  def button_1_click(self, **event_args):
+    """This method is called when the button is clicked"""
+    self.map_1.clear()
+
 
 
 
