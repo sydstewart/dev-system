@@ -145,7 +145,14 @@ class Form7(Form7Template):
 
   def drop_down_1_change(self, **event_args):
     """This method is called when an item is selected"""
-    self.map_1.clear()
+    self.mapbox = mapboxgl.Map({
+    'container': self.dom,
+    
+    # // Choose from Mapbox's core styles, or make your own style with Mapbox Studio
+    'style': 'mapbox://styles/mapbox/streets-v12',
+    'center': [-2.834603077700183, 54.1973265832562],
+    'zoom': 15})
+
     locations = app_tables.location.search(TreeType = self.drop_down_1.selected_value) #anvil.server.call('get_all_locations' )
     # self.hits_textbox.text = len(locations) 
     print(self.drop_down_1.selected_value)
@@ -172,11 +179,21 @@ class Form7(Form7Template):
 
       
        self.marker.setPopup(popup)
+       # woodland_link = app_tables.trees.get(WoodlandTrust_link=self.drop_down_1.selected)
+       iframe = jQuery("<iframe width='100%' height='800px'>").attr("src"," \
+     https://www.woodlandtrust.org.uk/trees-woods-and-wildlife/british-trees/a-z-of-british-trees/alder/") 
+    iframe.appendTo(get_dom_node(self.column_panel_1))
     pass
 
   def button_1_click(self, **event_args):
     """This method is called when the button is clicked"""
-    self.map_1.clear()
+    self.mapbox = mapboxgl.Map({
+    'container': self.dom,
+    
+    # // Choose from Mapbox's core styles, or make your own style with Mapbox Studio
+    'style': 'mapbox://styles/mapbox/streets-v12',
+    'center': [-2.834603077700183, 54.1973265832562],
+    'zoom': 15})
 
 
 
