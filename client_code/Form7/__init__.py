@@ -17,7 +17,9 @@ class Form7(Form7Template):
     # Any code you write here will run before the form opens.
     self.dom = anvil.js.get_dom_node(self.map_1)
     self.repeating_panel_1.items = app_tables.trees.search()
-    treelist = 
+    treelist =  applications =list({(r['Name']) for r in app_tables.trees.search(tables.order_by('Name'))})
+    self.drop_down_1.items =treelist
+    
   def form_show(self, **event_args):
     """This method is called when the HTML panel is shown on the screen"""
     mapboxgl.accessToken = self.token
@@ -28,7 +30,7 @@ class Form7(Form7Template):
     'style': 'mapbox://styles/mapbox/streets-v12',
     'center': [-2.834603077700183, 54.1973265832562],
     'zoom': 15})
-    locations = app_tables.location.search() #anvil.server.call('get_all_locations' )
+    locations = app_tables.location.search(TreeType = self.drop_down_1.selected_value) #anvil.server.call('get_all_locations' )
     # self.hits_textbox.text = len(locations) 
     
     for location in locations:
@@ -139,6 +141,7 @@ class Form7(Form7Template):
 
   def drop_down_1_change(self, **event_args):
     """This method is called when an item is selected"""
+    
     pass
 
 
