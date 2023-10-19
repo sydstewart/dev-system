@@ -17,11 +17,13 @@ class Form7(Form7Template):
     # Any code you write here will run before the form opens.
     self.dom = anvil.js.get_dom_node(self.map_1)
     self.repeating_panel_1.items = app_tables.trees.search()
-    treelist =  applications =list({(r['Name']) for r in app_tables.trees.search(tables.order_by('Name'))})
-    self.drop_down_1.items =treelist
+
     
   def form_show(self, **event_args):
     """This method is called when the HTML panel is shown on the screen"""
+    treelist =  applications =list({(r['Name']) for r in app_tables.trees.search(tables.order_by('Name'))})
+    self.drop_down_1.items =treelist
+    
     mapboxgl.accessToken = self.token
     self.mapbox = mapboxgl.Map({
     'container': self.dom,
@@ -30,21 +32,23 @@ class Form7(Form7Template):
     'style': 'mapbox://styles/mapbox/streets-v12',
     'center': [-2.834603077700183, 54.1973265832562],
     'zoom': 15})
-    locations = app_tables.location.search(TreeType = 'Alder') #self.drop_down_1.selected_value) #anvil.server.call('get_all_locations' )
+    locations = app_tables.location.search(TreeType = self.drop_down_1.selected_value) #anvil.server.call('get_all_locations' )
     # self.hits_textbox.text = len(locations) 
-    
+ 
     for location in locations:
        self.marker = mapboxgl.Marker({'color': 'brown', 'scale': '0.75', 'draggable': False})
        lat = location['Latitude']
        lng = location['Longitude']
        loc = location['Location']
        notes = location['Desc']
+       treetype = location['TreeType']
        print('lng',lng, ' ' ,'lat',lat)
 
        popuptext = ('Name:' + loc + '<br>' +
                     'Notes:' + notes + '<br>' +
                     'lat:' + str(lat) + '<br>' +   
                    'lng:' + str(lng) + '<br>' +
+                    'treetype ' + treetype + '<br>' +
                   '<button  id="myBtn">Hello </button>')
                    # '<button (click)="logger">View Full</button>')
        self.marker.on('click', self.text_change)
@@ -141,7 +145,7 @@ class Form7(Form7Template):
 
   def drop_down_1_change(self, **event_args):
     """This method is called when an item is selected"""
-    
+    open_form('Form7')
     pass
 
 
