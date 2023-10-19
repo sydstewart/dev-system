@@ -51,7 +51,7 @@ class Form7(Form7Template):
 
       
        self.marker.setPopup(popup)
-       self.marker.on('click', self.text_change)
+       
   # print('button', document.getElementById('View Full'))
   # document.getElementById("myBtn")  #.addEventListener("click",self.click)
   # # def click(self):
@@ -75,10 +75,12 @@ class Form7(Form7Template):
 
     self.marker.on('click', popuptext)
     xdom=document.getElementsById("myBtn")
+    popupElem = popup.getElement(xdom)
+    popupElem.style.fontSize = "25px"
+    print(xdom[''])
     xdom.addEventListener('click',self.text_change)
-    
-    
-  def text_change(self,):
+    self.marker.on('click', self.text_change)
+  def text_change(self):
     # print(source, self.quill.getText())
     self.text_area_1.text = popuptext
     print(popuptext)
