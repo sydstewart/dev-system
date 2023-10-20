@@ -179,9 +179,9 @@ class Form7(Form7Template):
 
       
        self.marker.setPopup(popup)
-       # woodland_link = app_tables.trees.get(WoodlandTrust_link=self.drop_down_1.selected)
-       iframe = jQuery("<iframe width='100%' height='800px'>").attr("src"," \
-     https://www.woodlandtrust.org.uk/trees-woods-and-wildlife/british-trees/a-z-of-british-trees/alder/") 
+    woodland_link = app_tables.trees.get(WoodlandTrust_link=self.drop_down_1.selected_value)
+    iframe = jQuery("<iframe width='100%' height='800px'>").attr("src"," \
+     %s/") % woodland_link
     iframe.appendTo(get_dom_node(self.column_panel_1))
     pass
 
