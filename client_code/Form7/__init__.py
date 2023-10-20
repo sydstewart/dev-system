@@ -69,9 +69,9 @@ class Form7(Form7Template):
   # def change_text(self):
   #  self.my_label.text='audio has finished playing'
      
-    iframe = jQuery("<iframe width='100%' height='800px'>").attr("src"," \
-     https://www.woodlandtrust.org.uk/trees-woods-and-wildlife/british-trees/a-z-of-british-trees/alder/") 
-    iframe.appendTo(get_dom_node(self.column_panel_1))
+    # iframe = jQuery("<iframe width='100%' height='800px'>").attr("src"," \
+    #  https://www.woodlandtrust.org.uk/trees-woods-and-wildlife/british-trees/a-z-of-british-trees/alder/") 
+    # iframe.appendTo(get_dom_node(self.column_panel_1))
 
   def text_change(self, popuptext):
     self.text_area_1.text = popuptext
@@ -179,9 +179,10 @@ class Form7(Form7Template):
 
       
        self.marker.setPopup(popup)
-    woodland_link = app_tables.trees.get(WoodlandTrust_link=self.drop_down_1.selected_value)
-    iframe = jQuery("<iframe width='100%' height='800px'>").attr("src"," \
-     %s/") % woodland_link
+    url = app_tables.trees.get(Name=self.drop_down_1.selected_value)
+    print('url',url['WoodlandTrust_link'],'dropdown',self.drop_down_1.selected_value )
+    iframe = jQuery("<iframe width='100%' height='800px'>").attr("src",url)
+     
     iframe.appendTo(get_dom_node(self.column_panel_1))
     pass
 
