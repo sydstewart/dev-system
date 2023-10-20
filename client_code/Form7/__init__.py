@@ -160,7 +160,9 @@ class Form7(Form7Template):
     self.marker.setLngLat([-2.834603077700183, 54.1973265832562]).addTo(self.mapbox)
     popup = mapboxgl.Popup({ 'offset': 20 }).setText(
          '-2.834603077700183, 54.1973265832562')
+    self.marker.setPopup(popup)
 
+    
     locations = app_tables.location.search(TreeType = self.drop_down_1.selected_value) #anvil.server.call('get_all_locations' )
     # self.hits_textbox.text = len(locations) 
     print(self.drop_down_1.selected_value)
