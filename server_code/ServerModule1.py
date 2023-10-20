@@ -11,12 +11,13 @@ import anvil.tables as tables
 from anvil.tables import app_tables
 
 @anvil.server.callable
-def add_location(name, desc, lat, lng):
+def add_location(name, desc, lat, lng, treetype):
   app_tables.location.add_row(
     Location =name, 
     Desc =desc, 
     Latitude = lat,
     Longitude = lng, 
+    TreeType= treetype,
     created=datetime.now()
   )
   email ='sydney.w.stewart@gmail.com'

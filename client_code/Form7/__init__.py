@@ -16,14 +16,14 @@ class Form7(Form7Template):
     self.token = "pk.eyJ1Ijoic3lkbmV5c3Rld2FydCIsImEiOiJjbG5vajJ1b3kwMG9xMnRscWcxa3p4YXBtIn0.mnKGtTfkOCDAGkdxA-cZnw"
     # Any code you write here will run before the form opens.
     self.dom = anvil.js.get_dom_node(self.map_1)
-    self.repeating_panel_1.items = app_tables.trees.search()
+    # self.repeating_panel_1.items = app_tables.trees.search()
 
     
   def form_show(self, **event_args):
     """This method is called when the HTML panel is shown on the screen"""
     treelist =  applications =list({(r['Name']) for r in app_tables.trees.search(tables.order_by('Name'))})
     self.drop_down_1.items =treelist
-    
+    self.drop_down_2.items = treelist
     mapboxgl.accessToken = self.token
     self.mapbox = mapboxgl.Map({
     'container': self.dom,
@@ -32,6 +32,7 @@ class Form7(Form7Template):
     'style': 'mapbox://styles/mapbox/streets-v12',
     'center': [-2.834603077700183, 54.1973265832562],
     'zoom': 15})
+    
     locations = app_tables.location.search(TreeType = self.drop_down_1.selected_value) #anvil.server.call('get_all_locations' )
     # self.hits_textbox.text = len(locations) 
     print(self.drop_down_1.selected_value)
@@ -77,7 +78,7 @@ class Form7(Form7Template):
     self.text_area_1.text = popuptext
     alert(popuptext)
  
-   # document.getElementById('view-full').addEventListener('click', logger) 
+ 
     self.marker = mapboxgl.Marker({'blue': '#0000FF', 'draggable': True})
     self.marker.setLngLat([-2.834603077700183, 54.1973265832562]).addTo(self.mapbox)
     popup = mapboxgl.Popup({ 'offset': 20 }).setText(
@@ -113,6 +114,8 @@ class Form7(Form7Template):
   def onDragEnd(self, dragend):
       xy = self.marker.getLngLat()
       # alert(xy)
+      self.latitude_text_box.text = xy['lat']
+      self.longitude_text_box.text = xy['lng']
       popup = mapboxgl.Popup({ 'offset': 25 }).setText(xy)
       self.marker.setPopup(popup)
 
@@ -128,9 +131,10 @@ class Form7(Form7Template):
     name = self.location_text_box.text
     desc = self.location_description_text_area.text
     lat =  self.latitude_text_box.text
-    lng = self.longitude_text_box.text 
+    lng = self.longitude_text_box.text
+    treetype =self.drop_down_2.selected_value
     
-    anvil.server.call('add_location', name, desc, lat, lng)
+    anvil.server.call('add_location', name, desc, lat, lng,treetype)
     Notification("We have recorded your location, and sent an email to the owner of this map.", title="Thanks!", timeout = 10).show()
     self.clear_inputs()
     
@@ -152,7 +156,11 @@ class Form7(Form7Template):
     'style': 'mapbox://styles/mapbox/streets-v12',
     'center': [-2.834603077700183, 54.1973265832562],
     'zoom': 15})
-    self.column_panel_1.visible = False
+    self.marker = mapboxgl.Marker({'blue': '#0000FF', 'draggable': True})
+    self.marker.setLngLat([-2.834603077700183, 54.1973265832562]).addTo(self.mapbox)
+    popup = mapboxgl.Popup({ 'offset': 20 }).setText(
+         '-2.834603077700183, 54.1973265832562')
+
     locations = app_tables.location.search(TreeType = self.drop_down_1.selected_value) #anvil.server.call('get_all_locations' )
     # self.hits_textbox.text = len(locations) 
     print(self.drop_down_1.selected_value)
