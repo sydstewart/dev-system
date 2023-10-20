@@ -76,6 +76,6 @@ db_schema:
       admin_ui: {width: 200, order: 1}
       type: string
     - name: WoodlandTrust_link
-      admin_ui: {width: 200, order: 2}
+      admin_ui: {order: 2, width: 680}
       type: string
     title: Trees
