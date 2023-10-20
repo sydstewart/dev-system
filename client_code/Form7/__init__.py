@@ -83,7 +83,8 @@ class Form7(Form7Template):
     self.marker.setLngLat([-2.834603077700183, 54.1973265832562]).addTo(self.mapbox)
     popup = mapboxgl.Popup({ 'offset': 20 }).setText(
          '-2.834603077700183, 54.1973265832562')
-
+    self.marker.on('dragend', self.onDragEnd)
+    
     self.marker.on('click', popuptext)
     xdom=document.getElementsById("myBtn")
     popupElem = popup.getElement(xdom)
@@ -95,7 +96,7 @@ class Form7(Form7Template):
 
     
     self.marker.on('dragend', self.onDragEnd)  
-    self.marker.on('help', self.logger) 
+
    
   
   def logger(self, **event_args):
