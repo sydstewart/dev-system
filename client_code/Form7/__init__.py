@@ -48,9 +48,9 @@ class Form7(Form7Template):
        popuptext = ('Name:' + loc + '<br>' +
                     'Notes:' + notes + '<br>' +
                     'lat:' + str(lat) + '<br>' +   
-                   'lng:' + str(lng) + '<br>' +
+                    'lng:' + str(lng) + '<br>' +
                     'treetype ' + treetype + '<br>' +
-                  '<button  id="myBtn">Hello </button>')
+                   '<button  id="myBtn">Hello </button>')
                    # '<button (click)="logger">View Full</button>')
        self.marker.on('click', self.text_change)
        # print(self.dom.getElementById('button'))
@@ -112,9 +112,10 @@ class Form7(Form7Template):
     alert(lnglat)
   def show_info(self,**event_args):
       alert('Syd')
+    
   def onDragEnd(self, dragend):
       xy = self.marker.getLngLat()
-      # alert(xy)
+      alert(str(xy['lat']) + ' ' + str(xy['lng']))
       self.latitude_text_box.text = xy['lat']
       self.longitude_text_box.text = xy['lng']
       popup = mapboxgl.Popup({ 'offset': 25 }).setText(xy)
@@ -162,7 +163,7 @@ class Form7(Form7Template):
     popup = mapboxgl.Popup({ 'offset': 20 }).setText(
          '-2.834603077700183, 54.1973265832562')
     self.marker.setPopup(popup)
-
+    self.marker.on('dragend', self.onDragEnd)  
     
     locations = app_tables.location.search(TreeType = self.drop_down_1.selected_value) #anvil.server.call('get_all_locations' )
     # self.hits_textbox.text = len(locations) 
@@ -192,7 +193,7 @@ class Form7(Form7Template):
        self.marker.setPopup(popup)
     url = app_tables.trees.get(Name=self.drop_down_1.selected_value)
     self.column_panel_1.clear()
-    print('url',url['WoodlandTrust_link'],'dropdown',self.drop_down_1.selected_value )
+    # print('url',url['WoodlandTrust_link'],'dropdown',self.drop_down_1.selected_value )
     iframe = jQuery("<iframe width='100%' height='800px'>").attr("src",url['WoodlandTrust_link'])
     self.column_panel_1.visible = True
     iframe.appendTo(get_dom_node(self.column_panel_1))
