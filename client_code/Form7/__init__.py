@@ -118,7 +118,7 @@ class Form7(Form7Template):
       alert(str(xy['lat']) + ' ' + str(xy['lng']))
       self.latitude_text_box.text = xy['lat']
       self.longitude_text_box.text = xy['lng']
-      popup = mapboxgl.Popup({ 'offset': 25 }).setText(xy)
+      popup = mapboxgl.Popup({ 'offset': 25 }).setText(str(xy['lat']) + ' ' + str(xy['lng']))
       self.marker.setPopup(popup)
 
 
