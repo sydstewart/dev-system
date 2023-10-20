@@ -180,7 +180,7 @@ class Form7(Form7Template):
       
        self.marker.setPopup(popup)
     url = app_tables.trees.get(Name=self.drop_down_1.selected_value)
-    self.column_panel_1.visible = False
+    self.column_panel_1.clear()
     print('url',url['WoodlandTrust_link'],'dropdown',self.drop_down_1.selected_value )
     iframe = jQuery("<iframe width='100%' height='800px'>").attr("src",url['WoodlandTrust_link'])
     self.column_panel_1.visible = True
