@@ -8,7 +8,7 @@ services:
 - source: /runtime/services/anvil/files.yml
   client_config: {}
   server_config: {file_table: files}
-startup: {type: form, module: Form7}
+startup: {type: form, module: Form9}
 package_name: Prod_System
 allow_embedding: false
 name: Prod System
@@ -80,7 +80,7 @@ db_schema:
       type: string
     title: Trees
   received_messages:
-    client: none
+    client: full
     server: full
     columns:
     - name: from_addr
@@ -96,6 +96,6 @@ db_schema:
       admin_ui: {width: 200, order: 3}
       type: string
     - name: subject
-      admin_ui: {width: 200, order: 4}
+      admin_ui: {order: 1.5, width: 200}
       type: string
     title: received_messages
