@@ -36,3 +36,20 @@ def import_excel_data(file):
       # We use Python's **kwargs syntax to pass the whole dict as 
       # keyword arguments 
       app_tables.your_table_name_here.add_row(**d)
+
+@anvil.email.handle_message
+def handle_incoming_emails(msg):
+  
+  msg.reply(text="Thank you for your message.")
+
+  msg_row = app_tables.received_messages.add_row(
+              from_addr=msg.envelope.from_address, 
+              to=msg.envelope.recipient,
+              text=msg.text, 
+              html=msg.html
+            )
+  for a in msg.attachments:
+    app_tables.attachments.add_row(
+      message=msg_row, 
+      attachment=a
+    )
