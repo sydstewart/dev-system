@@ -87,12 +87,15 @@ db_schema:
       admin_ui: {order: 0, width: 200}
       type: string
     - name: to
-      admin_ui: {width: 200, order: 1}
+      admin_ui: {order: 1, width: 348}
       type: string
     - name: text
-      admin_ui: {width: 200, order: 2}
+      admin_ui: {order: 2, width: 495}
       type: string
     - name: html
       admin_ui: {width: 200, order: 3}
+      type: string
+    - name: subject
+      admin_ui: {width: 200, order: 4}
       type: string
     title: received_messages

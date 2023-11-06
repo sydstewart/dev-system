@@ -45,6 +45,7 @@ def handle_incoming_emails(msg):
   msg_row = app_tables.received_messages.add_row(
               from_addr=msg.envelope.from_address, 
               to=msg.envelope.recipient,
+              subject =msg.subject,
               text=msg.text, 
               html=msg.html
             )
