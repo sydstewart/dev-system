@@ -13,7 +13,7 @@ package_name: Prod_System
 allow_embedding: false
 name: Prod System
 runtime_options: {version: 2, client_version: '3', server_version: python3-full, server_spec: null}
-metadata: {title: Prod System}
+metadata: {title: Prod System.}
 startup_form: null
 native_deps: {head_html: '<script src=''https://api.mapbox.com/mapbox-gl-js/v2.1.1/mapbox-gl.js''></script>
 
